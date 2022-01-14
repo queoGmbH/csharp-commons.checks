@@ -32,12 +32,12 @@ stages:
     steps:
     # .NET Core 3.1 installieren, da es nicht mehr per default installiert ist
     # wird derzeit noch für die Testausführung benötigt, bis die Testprojekte auf .NET 6.0 angehoben sind
-    - task: UseDotNet@2
-      displayName: 'Use .NET Core sdk'
-      inputs:
-        packageType: sdk
-        version: 3.1.402
-        installationPath: $(Agent.ToolsDirectory)/dotnet
+    #- task: UseDotNet@2
+    #  displayName: 'Use .NET Core sdk'
+    #  inputs:
+    #    packageType: sdk
+    #    version: 3.1.402
+    #    installationPath: $(Agent.ToolsDirectory)/dotnet
     
     - task: DotNetCoreCLI@2
       inputs:
