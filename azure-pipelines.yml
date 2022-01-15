@@ -48,9 +48,10 @@ stages:
         custom: 'tool'
         arguments: 'install -g dotnet-format --ignore-failed-sources'
     
-    - task: PowerShell@2
+    - task: ShellScript@2
       inputs:
-        filePath: 'build.ps1 --target=BuildAndTest'
+        scriptPath: 'build.sh'
+        args: '--target=BuildAndTest'
 
   - job: BuildNuGetPackageForDeploy
     dependsOn:
