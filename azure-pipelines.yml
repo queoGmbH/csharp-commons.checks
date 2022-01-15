@@ -22,7 +22,7 @@ stages:
   displayName: 'Build and test package'
 
   jobs:
-  - job: buildAndTest
+  - job: buildAndTest-windows
     pool:
       vmImage: 'windows-latest'
     
@@ -36,3 +36,36 @@ stages:
     - task: PowerShell@2
       inputs:
         filePath: 'build.ps1'
+
+  - job: buildAndTest-linux
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'custom'
+        custom: 'tool'
+        arguments: 'install -g dotnet-format --ignore-failed-sources'
+    
+    - task: PowerShell@2
+      inputs:
+        filePath: 'build.ps1 --target=BuildAndTest'
+
+  - job: BuildNuGetPackageForDeploy
+    dependsOn:
+    - buildAndTest-windows
+    - buildAndTest-linux
+    pool:
+      vmImage: 'windows-latest'
+
+    steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'custom'
+        custom: 'tool'
+        arguments: 'install -g dotnet-format --ignore-failed-sources'
+    
+    - task: PowerShell@2
+      inputs:
+        filePath: 'build.ps1 --target=BuildPackage'
