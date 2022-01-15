@@ -22,7 +22,7 @@ stages:
   displayName: 'Build and test package'
 
   jobs:
-  - job: buildAndTest-windows
+  - job: buildAndTest_windows
     pool:
       vmImage: 'windows-latest'
     
@@ -37,7 +37,7 @@ stages:
       inputs:
         filePath: 'build.ps1'
 
-  - job: buildAndTest-linux
+  - job: buildAndTest_linux
     pool:
       vmImage: 'ubuntu-latest'
 
@@ -54,8 +54,8 @@ stages:
 
   - job: BuildNuGetPackageForDeploy
     dependsOn:
-    - buildAndTest-windows
-    - buildAndTest-linux
+    - buildAndTest_windows
+    - buildAndTest_linux
     pool:
       vmImage: 'windows-latest'
 
