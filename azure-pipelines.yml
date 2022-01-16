@@ -36,6 +36,7 @@ stages:
     - task: PowerShell@2
       inputs:
         filePath: 'build.ps1'
+        args: '--target=BuildAndTest'
 
   - job: buildAndTest_linux
     pool:
@@ -77,4 +78,5 @@ stages:
     
     - task: PowerShell@2
       inputs:
-        filePath: 'build.ps1 --target=BuildPackage'
+        filePath: 'build.ps1'
+        args: '--target=BuildPackage'
