@@ -1,3 +1,5 @@
+using Build.Tasks;
+
 using Cake.Frosting;
 
 namespace Build {
@@ -6,6 +8,7 @@ namespace Build {
     [IsDependentOn(typeof(GenerateVersion))]
     [IsDependentOn(typeof(Build))]
     [IsDependentOn(typeof(RunTestsAndPublishResults))]
+    [IsDependentOn(typeof(BuildNuGetPackage))]
     [IsDependentOn(typeof(GetNuGetPackagesFromArtifacts))]
     [IsDependentOn(typeof(UploadArtifactsToPipeline))]
     //[Dependency(typeof(PushNuGetPackagesToQueo))]
@@ -20,7 +23,7 @@ namespace Build {
 
     [IsDependentOn(typeof(NugetRestore))]
     [IsDependentOn(typeof(GenerateVersion))]
-    [IsDependentOn(typeof(Build))]
+    [IsDependentOn(typeof(BuildNuGetPackage))]
     [IsDependentOn(typeof(GetNuGetPackagesFromArtifacts))]
     [IsDependentOn(typeof(UploadArtifactsToPipeline))]
     public partial class BuildPackage { }
