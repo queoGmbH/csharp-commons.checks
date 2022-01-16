@@ -1,15 +1,13 @@
 using System.IO;
 
 using Build.Common.Enums;
-using Build.Common.Extensions;
 
-using Cake.Common.Tools.MSBuild;
 using Cake.Common.Tools.DotNet;
 using Cake.Frosting;
 
-namespace Build
+namespace Build.Tasks
 {
-    public sealed class Build : FrostingTask<Context>
+    public sealed class BuildNuGetPackage : FrostingTask<Context>
     {
         public override void Run(Context context)
         {
@@ -18,8 +16,7 @@ namespace Build
             {
                 if (!context.General.IsLocal && context.General.CurrentBranch == Branches.Main)
                 {
-                    versionPrefix =
-                        $"{projectToBuild.ArtifactVersion.Major}.{projectToBuild.ArtifactVersion.Minor}.{projectToBuild.ArtifactVersion.Patch}";
+                    versionPrefix = $"{projectToBuild.ArtifactVersion.Major}.{projectToBuild.ArtifactVersion.Minor}.{projectToBuild.ArtifactVersion.Patch}";
                     versionSuffix = string.Empty;
                 }
                 else
@@ -27,12 +24,11 @@ namespace Build
                     versionPrefix = $"{projectToBuild.ArtifactVersion.Major}.{projectToBuild.ArtifactVersion.Minor}.{projectToBuild.ArtifactVersion.Patch}";
                     versionSuffix = $"{projectToBuild.ArtifactVersion.Prerelease}-{projectToBuild.ArtifactVersion.Build}";
                 }
-                context.DotNetBuild(Path.Combine(context.Environment.WorkingDirectory.FullPath, projectToBuild.MainProject),
-                    new Cake.Common.Tools.DotNet.Build.DotNetBuildSettings()
+                context.DotNetPack(Path.Combine(context.Environment.WorkingDirectory.FullPath, projectToBuild.MainProject),
+                    new Cake.Common.Tools.DotNet.Pack.DotNetPackSettings()
                     {
                         Configuration = "Release",
                         OutputDirectory = "./.artifacts",
-                        Verbosity = DotNetVerbosity.Normal,
                         VersionSuffix = versionSuffix
                     });
             }
