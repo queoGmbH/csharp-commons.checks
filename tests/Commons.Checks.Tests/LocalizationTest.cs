@@ -30,7 +30,7 @@ namespace Commons.Checks.Tests
                 Console.WriteLine(exception.Message);
                 StringAssert.Contains("The parameter propertyName must be less or equals to 2. But it was 4.", exception.Message);
             }
-            
+
         }
     }
 }
