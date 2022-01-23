@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using Queo.Commons.Checks.Resources;
+
 namespace Queo.Commons.Checks
 {
     /// <summary>
@@ -42,8 +44,7 @@ namespace Queo.Commons.Checks
             Comparer<TValue> comparer = Comparer<TValue>.Default;
             if (comparer.Compare(number, atLeast) > 0)
             {
-                throw new ArgumentOutOfRangeException(propertyName, number,
-                    string.Format("Der Parameter {0} muss kleiner als oder gleich {1} sein. Er war aber nur {2}", propertyName, atLeast,
+                throw new ArgumentOutOfRangeException(propertyName, string.Format(Messages.ex_less_or_equals, propertyName, atLeast,
                         number));
             }
         }
