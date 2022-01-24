@@ -37,6 +37,10 @@ stages:
       inputs:
         filePath: 'build.ps1'
         args: '--target=BuildAndTest'
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: Cobertura
+        summaryFileLocation: $(System.DefaultWorkingDirectory)/tests/**/coverage.cobertura.xml
 
   - job: buildAndTest_linux
     pool:
