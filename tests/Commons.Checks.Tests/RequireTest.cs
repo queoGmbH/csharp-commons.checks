@@ -1,5 +1,7 @@
 using System;
 
+using FluentAssertions;
+
 using NUnit.Framework;
 
 using Queo.Commons.Checks;
@@ -9,6 +11,45 @@ namespace Commons.Checks.Tests
     [TestFixture]
     public class RequireTest
     {
+        [Test]
+        public void TestGeForGreater()
+        {
+            Require.Ge(4, 2, "param");
+        }
+
+        [Test]
+        public void TestGeForEqual()
+        {
+            Require.Ge(3, 3, "param");
+        }
+
+        [Test]
+        public void TestGeForLessThanThrows()
+        {
+            Action action = () => Require.Ge(2, 4, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
+        public void TestGtWithGreater()
+        {
+            Require.Gt(4, 2, "param");
+        }
+
+        [Test]
+        public void TestGtWithEqualThrows()
+        {
+            Action action = () => Require.Gt(3, 3, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
+        public void TestGtWithLessThrows()
+        {
+            Action action = () => Require.Gt(2, 4, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
         [Test]
         public void TestLeForClass()
         {
@@ -21,7 +62,7 @@ namespace Commons.Checks.Tests
         [Test]
         public void TestLeForEqual()
         {
-            Require.Le(2, 5, "param1");
+            Require.Le(2, 2, "param1");
         }
 
         [Test]
@@ -31,11 +72,45 @@ namespace Commons.Checks.Tests
         }
 
         [Test]
+        public void TestLeForGreaterShouldThrow()
+        {
+            Action action = () => Require.Le(5, 2, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
+        public void TestLtWithLess()
+        {
+            Require.Lt(2, 3, "param");
+        }
+
+        [Test]
+        public void TestLtWithEqualThrows()
+        {
+            Action action = () => Require.Lt(2, 2, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
+        public void TestLtWithGreaterThrows()
+        {
+            Action action = () => Require.Lt(5, 2, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
         public void TestNotNull()
         {
             string param = "Test";
             Require.NotNull(param, nameof(param));
             Assert.Pass();
+        }
+
+        [Test]
+        public void TestNotNullWithNullWithoutParamNameThrows()
+        {
+            Action action = () => Require.NotNull((object)null);
+            action.Should().Throw<ArgumentNullException>();
         }
 
         [Test]
@@ -52,6 +127,53 @@ namespace Commons.Checks.Tests
         {
             ArgumentNullException argumentNullException = Assert.Throws<ArgumentNullException>(() => Require.NotNull((string)null, null));
             Assert.AreEqual("unknown", argumentNullException.ParamName);
+        }
+
+        [Test]
+        public void TestNotNullOrEmpty()
+        {
+            Require.NotNullOrEmpty("test", "param");
+        }
+
+        [Test]
+        public void TestNotNullOrEmptyWithNullThrows()
+        {
+            Action action = () => Require.NotNullOrEmpty((string)null, "Param");
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Test]
+        public void TestNotNullOrEmptyWithEmptyThrows()
+        {
+            Action action = () => Require.NotNullOrEmpty(string.Empty, "param");
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Test]
+        public void TestNotNullOrEmptySuccess()
+        {
+            Require.NotNullOrEmpty("text", "param");
+        }
+
+        [Test]
+        public void TestNotNullOrWhitespaceSuccess()
+        {
+            Require.NotNullOrWhiteSpace("test", "param");
+        }
+
+        [Test]
+        public void TestNotNullOrWhitespaceWithNullThrows()
+        {
+            string test = null;
+            Action action = () => Require.NotNullOrWhiteSpace(test, "param");
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Test]
+        public void TestNotNullOrWhitespaceWithWhitespaceThrows()
+        {
+            Action action = () => Require.NotNullOrWhiteSpace(" ", "param");
+            action.Should().Throw<ArgumentNullException>();
         }
     }
 
