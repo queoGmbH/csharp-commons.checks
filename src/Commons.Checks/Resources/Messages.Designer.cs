@@ -61,11 +61,65 @@ namespace Queo.Commons.Checks.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Der Parameter {0} muss kleiner als oder gleich {1} sein. Er war aber nur {2}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Parameter {0} muss größer als {1} sein. Er war {2}. ähnelt.
+        /// </summary>
+        internal static string ex_greater {
+            get {
+                return ResourceManager.GetString("ex_greater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Parameter {0} muss größer als oder gleich {1} sein. Er war {2}. ähnelt.
+        /// </summary>
+        internal static string ex_greater_or_equals {
+            get {
+                return ResourceManager.GetString("ex_greater_or_equals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Parameter {0} muss kleiner als {1} sein. Er war {2}. ähnelt.
+        /// </summary>
+        internal static string ex_less {
+            get {
+                return ResourceManager.GetString("ex_less", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Parameter {0} muss kleiner als oder gleich {1} sein. Er war {2}. ähnelt.
         /// </summary>
         internal static string ex_less_or_equals {
             get {
                 return ResourceManager.GetString("ex_less_or_equals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Parameter {0} darf nicht NULL sein. ähnelt.
+        /// </summary>
+        internal static string ex_not_null {
+            get {
+                return ResourceManager.GetString("ex_not_null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Parameter {0} darf nicht NULL oder Empty sein. ähnelt.
+        /// </summary>
+        internal static string ex_not_null_or_empty {
+            get {
+                return ResourceManager.GetString("ex_not_null_or_empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Parameter {0} darf nicht NULL sein oder nur Leerzeichen enthalten. ähnelt.
+        /// </summary>
+        internal static string ex_not_null_or_whitespace {
+            get {
+                return ResourceManager.GetString("ex_not_null_or_whitespace", resourceCulture);
             }
         }
     }

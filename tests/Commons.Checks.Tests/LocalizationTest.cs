@@ -21,6 +21,7 @@ namespace Commons.Checks.Tests
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
             Console.WriteLine("Current culture is now en-US");
+            
             try
             {
                 Require.Le(4, 2, "propertyName");
