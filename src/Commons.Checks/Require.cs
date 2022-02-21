@@ -18,8 +18,7 @@ namespace Queo.Commons.Checks
             if (Comparer<TValue>.Default.Compare(number, atLeast) < 0)
             {
                 throw new ArgumentOutOfRangeException(propertyName, number,
-                    string.Format("Der Parameter {0} muss größer als oder gleich {1} sein. Er war aber nur {2}", propertyName, atLeast,
-                        number));
+                    string.Format(Messages.ex_greater_or_equals, propertyName, atLeast, number));
             }
         }
 
@@ -31,7 +30,7 @@ namespace Queo.Commons.Checks
             if (Comparer<TValue>.Default.Compare(number, atLeast) <= 0)
             {
                 throw new ArgumentOutOfRangeException(propertyName, number,
-                    string.Format("Der Parameter {0} muss größer als {1} sein. Er war aber nur {2}", propertyName, atLeast, number));
+                    string.Format(Messages.ex_greater, propertyName, atLeast, number));
             }
         }
 
@@ -57,7 +56,7 @@ namespace Queo.Commons.Checks
             if (Comparer<TValue>.Default.Compare(number, atLeast) >= 0)
             {
                 throw new ArgumentOutOfRangeException(propertyName, number,
-                    string.Format("Der Parameter {0} muss kleiner als {1} sein. Er war aber nur {2}", propertyName, atLeast, number));
+                    string.Format(Messages.ex_less, propertyName, atLeast, number));
             }
         }
 
@@ -100,7 +99,7 @@ namespace Queo.Commons.Checks
             if (obj == null)
             {
                 string checkedParameterName = parameterName ?? "unknown";
-                throw new ArgumentNullException(checkedParameterName);
+                throw new ArgumentNullException(checkedParameterName, string.Format(Messages.ex_not_null, parameterName));
             }
 
             return obj;
@@ -115,7 +114,8 @@ namespace Queo.Commons.Checks
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new ArgumentNullException(propertyName ?? "unknown");
+                string parameterName = propertyName ?? "unknown";
+                throw new ArgumentNullException(parameterName, string.Format(Messages.ex_not_null_or_empty, parameterName));
             }
         }
 
@@ -128,7 +128,7 @@ namespace Queo.Commons.Checks
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException(propertyName);
+                throw new ArgumentNullException(propertyName, string.Format(Messages.ex_not_null_or_whitespace, propertyName));
             }
         }
     }

@@ -117,7 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ex_greater" xml:space="preserve">
+    <value>The parameter {0} must be greater than {1}. But it was {2}.</value>
+  </data>
+  <data name="ex_greater_or_equals" xml:space="preserve">
+    <value>The parameter {0} must be greater or equals to {1}. But it was {2}.</value>
+  </data>
+  <data name="ex_less" xml:space="preserve">
+    <value>The parameter {0} must be less than {1}. But it was {2}.</value>
+  </data>
   <data name="ex_less_or_equals" xml:space="preserve">
     <value>The parameter {0} must be less or equals to {1}. But it was {2}.</value>
+  </data>
+  <data name="ex_not_null" xml:space="preserve">
+    <value>The parameter {0} must not be NULL.</value>
+  </data>
+  <data name="ex_not_null_or_empty" xml:space="preserve">
+    <value>The parameter {0} must not be NULL or empty.</value>
+  </data>
+  <data name="ex_not_null_or_whitespace" xml:space="preserve">
+    <value>The parameter {0} must not be NULL or whiitespace.</value>
   </data>
 </root>
