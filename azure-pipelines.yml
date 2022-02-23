@@ -85,7 +85,9 @@ stages:
         filePath: 'build.ps1'
         args: '--target=BuildPackage'
 
-    - publish: $(System.DefaultWorkingDirectory)/.artifacts/*.nupkg
+    - script: echo 'dir $(System.DefaultWorkingDirectory)/.artifacts/'
+
+    - publish: '$(System.DefaultWorkingDirectory)/.artifacts/*.nupkg'
       artifact: NuGetPackage
 
 - stage: Publish
