@@ -84,3 +84,26 @@ stages:
       inputs:
         filePath: 'build.ps1'
         args: '--target=BuildPackage'
+
+    - publish: $(System.DefaultWorkingDirectory)/.artifacts/*.nupkg
+      artifact: NuGetPackage
+
+- stage: Publish
+  displayName: 'Publish to nuget.org'
+  # condition: and(succeeded), eq(variables['build.sourceBranch'], 'refs/heads/main'))
+
+  jobs:
+  - job:
+    steps:
+    - download: current
+      artifact: NuGetPackage
+
+    - task: NuGetAthenticate@0
+      inputs:
+        nuGetServiceConnection: 'queoNuGetOrg'
+
+    - task: NuGetCommand@2
+      inputs:
+        command: push
+        nuGetFeedType: external
+        packagesToPush: $(Build.ArtifactStagingDirectory)/*.nupkg
