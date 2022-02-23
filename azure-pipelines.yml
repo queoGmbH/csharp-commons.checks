@@ -98,7 +98,7 @@ stages:
     - download: current
       artifact: NuGetPackage
 
-    - task: NuGetAthenticate@0
+    - task: NuGetAuthenticate@0
       inputs:
         nuGetServiceConnection: 'queoNuGetOrg'
 
