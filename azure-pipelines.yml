@@ -109,5 +109,6 @@ stages:
     - task: NuGetCommand@2
       inputs:
         command: push
-        nuGetFeedType: external
+        feedsToUse: 'config'
+        includeNuGetOrg: 'true'
         packagesToPush: $(Pipeline.Workspace)/**/*.nupkg
