@@ -101,6 +101,8 @@ stages:
       artifact: NuGetPackage
 
     - script: ls -la $(Build.ArtifactStagingDirectory)
+    - script: ls -la
+    - script: ls -la $(Pipeline.Workspace)
 
     - task: NuGetAuthenticate@0
       inputs:
