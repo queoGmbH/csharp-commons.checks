@@ -23,7 +23,6 @@ stages:
 
   jobs:
   - job: buildAndTest_windows
-    condition: false
     pool:
       vmImage: 'windows-latest'
     
@@ -44,7 +43,6 @@ stages:
         summaryFileLocation: $(System.DefaultWorkingDirectory)/tests/**/coverage.cobertura.xml
 
   - job: buildAndTest_linux
-    condition: false
     pool:
       vmImage: 'ubuntu-latest'
 
@@ -69,9 +67,9 @@ stages:
         args: '--target=BuildAndTest'
 
   - job: BuildNuGetPackageForDeploy
-    #dependsOn:
-    #- buildAndTest_windows
-    #- buildAndTest_linux
+    dependsOn:
+    - buildAndTest_windows
+    - buildAndTest_linux
     pool:
       vmImage: 'windows-latest'
 
