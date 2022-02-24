@@ -97,7 +97,8 @@ stages:
   jobs:
   - job:
     steps:
-    - checkout: None
+    - checkout: 'none'
+
     - download: current
       artifact: NuGetPackage
 
