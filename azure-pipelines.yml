@@ -109,7 +109,6 @@ stages:
     - task: NuGetCommand@2
       inputs:
         command: push
-        feed: external
-        feedsToUse: 'config'
-        includeNuGetOrg: 'true'
+        nuGetFeedType: 'external'
+        publishFeedCredentials: 'queoNuGetOrg'
         packagesToPush: $(Pipeline.Workspace)/**/*.nupkg
