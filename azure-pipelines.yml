@@ -92,7 +92,7 @@ stages:
 
 - stage: Publish
   displayName: 'Publish to nuget.org'
-  condition: and(succeeded()), in(variables['build.sourceBranch'], 'refs/heads/main', 'refs/heads/develop'))
+  condition: and(succeeded(), in(variables['build.sourceBranch'], 'refs/heads/main', 'refs/heads/develop'))
 
   jobs:
   - job:
