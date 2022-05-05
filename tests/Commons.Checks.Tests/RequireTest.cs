@@ -12,6 +12,52 @@ namespace Commons.Checks.Tests
     public class RequireTest
     {
         [Test]
+        public void TestRangeForValueGreaterThanMax()
+        {
+            Action action = () => Require.Range(10, 20, 30, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
+        public void TestRangeForValueLessThanMin()
+        {
+            Action action = () => Require.Range(10, 20, 5, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
+        public void TestRangeForValueEqualMin()
+        {
+            Require.Range(10, 20, 10, "param");
+        }
+
+        [Test]
+        public void TestRangeForValueEqualMax()
+        {
+            Require.Range(10, 20, 20, "param");
+        }
+
+        [Test]
+        public void TestRangerForValueInRange()
+        {
+            Require.Range(10, 20, 15, "param");
+        }
+
+        [Test]
+        public void TestRangeForMinEqualMax()
+        {
+            Action action = () => Require.Range(10, 10, 10, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
+        public void TestRangeForMinGreaterMax()
+        {
+            Action action = () => Require.Range(20, 10, 15, "param");
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
         public void TestGeForGreater()
         {
             Require.Ge(4, 2, "param");

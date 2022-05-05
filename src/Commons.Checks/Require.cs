@@ -11,6 +11,27 @@ namespace Queo.Commons.Checks
     public static class Require
     {
         /// <summary>
+        ///     Überprüft, ob ein <see cref="TValue""/> in einer geforderten Range liegt.
+        /// </summary>
+        public static void Range<TValue>(TValue min, TValue max, TValue value, string propertyName)
+        {
+            if(Comparer<TValue>.Default.Compare(max, min) > 0)
+            {
+                if(Comparer<TValue>.Default.Compare(min, value) > 0)
+                {
+                    throw new ArgumentOutOfRangeException(propertyName, value, string.Format(Messages.ex_greater_or_equals, propertyName, min, value));
+                }
+                if (Comparer<TValue>.Default.Compare(max, value) < 0)
+                {
+                    throw new ArgumentOutOfRangeException(propertyName, value, string.Format(Messages.ex_less_or_equals,propertyName, max, value));
+                }
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(string.Format(Messages.ex_unvalid_range, max, min));
+            }
+        }
+        /// <summary>
         ///     Überprüft, ob ein <see cref="TValue" /> größer oder gleich dem geforderten <see cref="TValue" /> ist.
         /// </summary>
         public static void Ge<TValue>(TValue number, TValue atLeast, string propertyName) where TValue : IComparable<TValue>
