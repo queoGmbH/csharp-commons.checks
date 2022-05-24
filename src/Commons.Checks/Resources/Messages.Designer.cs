@@ -122,5 +122,14 @@ namespace Queo.Commons.Checks.Resources {
                 return ResourceManager.GetString("ex_not_null_or_whitespace", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Maximalwert {0} darf nicht kleiner oder gleich sein wie der Minimalwert {1}. ähnelt.
+        /// </summary>
+        internal static string ex_unvalid_range {
+            get {
+                return ResourceManager.GetString("ex_unvalid_range", resourceCulture);
+            }
+        }
     }
 }

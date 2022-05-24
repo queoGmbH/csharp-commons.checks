@@ -138,4 +138,7 @@
   <data name="ex_not_null_or_whitespace" xml:space="preserve">
     <value>Der Parameter {0} darf nicht NULL sein oder nur Leerzeichen enthalten.</value>
   </data>
+  <data name="ex_unvalid_range" xml:space="preserve">
+    <value>Der Maximalwert {0} darf nicht kleiner oder gleich sein wie der Minimalwert {1}.</value>
+  </data>
 </root>
