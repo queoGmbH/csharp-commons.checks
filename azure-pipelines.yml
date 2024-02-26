@@ -36,24 +36,25 @@ stages:
     - task: PowerShell@2
       inputs:
         filePath: 'build.ps1'
-        args: '--target=BuildAndTest'
+        arguments: '--target=BuildAndTest'
+
     - task: PublishCodeCoverageResults@1
       inputs:
         codeCoverageTool: Cobertura
         summaryFileLocation: $(System.DefaultWorkingDirectory)/tests/**/coverage.cobertura.xml
 
   - job: buildAndTest_linux
+    dependsOn: buildAndTest_windows
     pool:
       vmImage: 'ubuntu-latest'
 
     steps:
-    # .NET Core 6.0 installieren, da es noch nicht per default installiert ist
+    # .NET Core 6.0 installieren, da es momentan zu Versionskonflikten kommt.
     - task: UseDotNet@2
       displayName: 'Use .NET Core sdk'
       inputs:
         packageType: sdk
-        version: 6.0.x
-        installationPath: $(Agent.ToolsDirectory)/dotnet
+        version: 6.0.100
     
     - task: DotNetCoreCLI@2
       inputs:
@@ -83,7 +84,7 @@ stages:
     - task: PowerShell@2
       inputs:
         filePath: 'build.ps1'
-        args: '--target=BuildPackage'
+        arguments: '--target=BuildPackage'
 
     - publish: '$(System.DefaultWorkingDirectory)/.artifacts'
       artifact: NuGetPackage
@@ -110,3 +111,35 @@ stages:
         nuGetFeedType: 'external'
         publishFeedCredentials: 'queoNuGetOrg'
         packagesToPush: $(Pipeline.Workspace)/**/*.nupkg
+
+  - deployment: DeployToBeta
+    displayName: Deploy to beta
+    dependsOn: publish
+    condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/develop'))
+    pool: 
+      vmImage: 'ubuntu-latest'
+    # Creates an environment if it doesn't exist. Seems not to work. the environment must exist.
+    environment: commons_checks-BetaChannel
+    strategy:
+      # Default deployment strategy, more coming...
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self 
+          - script: echo deployment to beta
+  
+  - deployment: DeployToProd
+    displayName: Deploy to prod
+    dependsOn: publish
+    condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/main'))
+    pool: 
+      vmImage: 'ubuntu-latest'
+    # Creates an environment if it doesn't exist.
+    environment: commons_checks-ReleaseChannel
+    strategy:
+      # Default deployment strategy, more coming...
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self 
+          - script: echo deployment to release

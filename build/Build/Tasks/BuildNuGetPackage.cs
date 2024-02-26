@@ -16,12 +16,10 @@ namespace Build.Tasks
             {
                 if (!context.General.IsLocal && context.General.CurrentBranch == Branches.Main)
                 {
-                    versionPrefix = $"{projectToBuild.ArtifactVersion.Major}.{projectToBuild.ArtifactVersion.Minor}.{projectToBuild.ArtifactVersion.Patch}";
                     versionSuffix = string.Empty;
                 }
                 else
                 {
-                    versionPrefix = $"{projectToBuild.ArtifactVersion.Major}.{projectToBuild.ArtifactVersion.Minor}.{projectToBuild.ArtifactVersion.Patch}";
                     versionSuffix = $"{projectToBuild.ArtifactVersion.Prerelease}-{projectToBuild.ArtifactVersion.Build}";
                 }
                 context.DotNetPack(Path.Combine(context.Environment.WorkingDirectory.FullPath, projectToBuild.MainProject),
