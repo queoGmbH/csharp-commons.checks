@@ -94,7 +94,7 @@ stages:
   condition: and(succeeded(), in(variables['build.sourceBranch'], 'refs/heads/main', 'refs/heads/develop'))
 
   jobs:
-  - job:
+  - job: publish
     steps:
     - checkout: 'none'
 
