@@ -1,14 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Queo.Commons.Checks</AssemblyName>
     <RootNamespace>Queo.Commons.Checks</RootNamespace>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>Queo/software csharp</Authors>
-    <Company>queo GmbH</Company>
-    <Copyright>2022 queo GmbH</Copyright>
     <VersionPrefix>3.0.0</VersionPrefix>
+    <Authors>queo/software/csharp</Authors>
+    <Company>queo GmbH</Company>
+    <Copyright>2024 queo GmbH</Copyright>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Description>Queo.Commons.Checks provides methods for checking required conditions.</Description>
+    <PackageId>Queo.Commons.Checks</PackageId>
+    <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/queoGmbH/csharp-commons.checksdeepl</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
