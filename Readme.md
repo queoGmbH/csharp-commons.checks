@@ -15,7 +15,6 @@ Queo.Commons.Checks provides methods for checking required conditions.
 ## How to use it
 - include Nuget-Package (queo.commons.checks)
 
-```powershell
-Find-Package queo.commons.checks
-Install-Package queo.commons.checks -ProjectName MyProject
+```csharp
+<PackageReference Include="Queo.Commons.Checks" Version="3.0.0" />
 ```
