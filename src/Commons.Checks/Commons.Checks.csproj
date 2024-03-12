@@ -14,7 +14,7 @@
     <PackageId>Queo.Commons.Checks</PackageId>
     <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/queoGmbH/csharp-commons.checksdeepl</RepositoryUrl>
+    <RepositoryUrl>https://github.com/queoGmbH/csharp-commons.checks</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
