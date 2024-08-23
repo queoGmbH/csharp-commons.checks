@@ -3,6 +3,7 @@ using System;
 using FluentAssertions;
 
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 using Queo.Commons.Checks;
 
@@ -165,14 +166,14 @@ namespace Commons.Checks.Tests
             object test = null;
             // ReSharper disable once ExpressionIsAlwaysNull : Das ist der Testfall
             ArgumentNullException argumentNullException = Assert.Throws<ArgumentNullException>(() => Require.NotNull(test, "param1"));
-            Assert.AreEqual("param1", argumentNullException.ParamName);
+            ClassicAssert.AreEqual("param1", argumentNullException.ParamName);
         }
 
         [Test]
         public void TestNotNullWithNullAsName()
         {
             ArgumentNullException argumentNullException = Assert.Throws<ArgumentNullException>(() => Require.NotNull((string)null, null));
-            Assert.AreEqual("unknown", argumentNullException.ParamName);
+            ClassicAssert.AreEqual("unknown", argumentNullException.ParamName);
         }
 
         [Test]
