@@ -14,7 +14,7 @@ Queo.Commons.Checks provides methods for checking required conditions.
 
 - Add following code to class or file where you want to use the `Check` class:
 ```csharp
-using Commons.Checks;
+using Queo.Commons.Checks;
 [...]
 Require.NotNull(name, nameof(name));
 ```
