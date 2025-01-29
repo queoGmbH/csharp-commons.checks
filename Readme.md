@@ -5,16 +5,16 @@
 ## Description
 Queo.Commons.Checks provides methods for checking required conditions.
 
-
-## Example
--
-
-### Steps:
--
-
 ## How to use it
-- include Nuget-Package (queo.commons.checks)
+- Include Nuget-Package (queo.commons.checks)
 
 ```csharp
 <PackageReference Include="Queo.Commons.Checks" Version="3.0.0" />
+```
+
+- Add following code to class or file where you want to use the `Check` class:
+```csharp
+using Queo.Commons.Checks;
+[...]
+Require.NotNull(name, nameof(name));
 ```
