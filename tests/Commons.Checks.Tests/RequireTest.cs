@@ -165,14 +165,16 @@ namespace Commons.Checks.Tests
         {
             object test = null;
             // ReSharper disable once ExpressionIsAlwaysNull : Das ist der Testfall
-            ArgumentNullException argumentNullException = Assert.Throws<ArgumentNullException>(() => Require.NotNull(test, "param1"));
+            Action action = () => Require.NotNull(test, "param1");
+            ArgumentNullException argumentNullException = Assert.Throws<ArgumentNullException>(action);
             ClassicAssert.AreEqual("param1", argumentNullException.ParamName);
         }
 
         [Test]
         public void TestNotNullWithNullAsName()
         {
-            ArgumentNullException argumentNullException = Assert.Throws<ArgumentNullException>(() => Require.NotNull((string)null, null));
+            Action action = () => Require.NotNull((object)null, null);
+            ArgumentNullException argumentNullException = Assert.Throws<ArgumentNullException>(action);
             ClassicAssert.AreEqual("unknown", argumentNullException.ParamName);
         }
 
