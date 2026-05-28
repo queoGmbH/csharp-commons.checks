@@ -90,6 +90,8 @@ stages:
 
   jobs:
   - job: publish
+    pool:
+      vmImage: 'windows-latest'
     steps:
     - checkout: 'none'
 
