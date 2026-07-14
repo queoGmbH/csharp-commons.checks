@@ -44,12 +44,11 @@ stages:
       vmImage: 'ubuntu-latest'
 
     steps:
-    # .NET Core 8.0 installieren, da es momentan zu Versionskonflikten kommt.
     - task: UseDotNet@2
       displayName: 'Use .NET Core sdk'
       inputs:
         packageType: sdk
-        version: 8.0.101
+        version: 10.0.301
     
     - task: DotNetCoreCLI@2
       inputs:
