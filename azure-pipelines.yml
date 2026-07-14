@@ -89,6 +89,8 @@ stages:
 
   jobs:
   - job: publish
+    pool:
+      vmImage: 'windows-latest'
     steps:
     - checkout: 'none'
 
@@ -111,7 +113,7 @@ stages:
     dependsOn: publish
     condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/develop'))
     pool: 
-      vmImage: 'ubuntu-latest'
+      vmImage: 'windows-latest'
     # Creates an environment if it doesn't exist. Seems not to work. the environment must exist.
     environment: commons_checks-BetaChannel
     strategy:
@@ -127,7 +129,7 @@ stages:
     dependsOn: publish
     condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/main'))
     pool: 
-      vmImage: 'ubuntu-latest'
+      vmImage: 'windows-latest'
     # Creates an environment if it doesn't exist.
     environment: commons_checks-ReleaseChannel
     strategy:
