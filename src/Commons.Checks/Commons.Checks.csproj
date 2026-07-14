@@ -5,10 +5,10 @@
     <AssemblyName>Queo.Commons.Checks</AssemblyName>
     <RootNamespace>Queo.Commons.Checks</RootNamespace>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <VersionPrefix>3.1.1</VersionPrefix>
+    <VersionPrefix>3.2.0</VersionPrefix>
     <Authors>queo/software/csharp</Authors>
     <Company>queo GmbH</Company>
-    <Copyright>2024 queo GmbH</Copyright>
+    <Copyright>2026 queo GmbH</Copyright>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Description>Queo.Commons.Checks provides methods for checking required conditions.</Description>
     <PackageId>Queo.Commons.Checks</PackageId>
